@@ -60,7 +60,7 @@ ml-web-app/
 1. **Клонировать репозиторий:**
 
    ```bash
-   git clone <git@github.com:NDVAF/ml_model.git>
+   git clone <https://github.com/NDVAF/ml_model.git>
    cd ml-web-app
 
 2. **Создать и активировать виртуальное окружение (рекомендовано):**
