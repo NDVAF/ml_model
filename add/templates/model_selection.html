@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Обработка данных</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Загрузка</a> |
+        <a href="/model_selection">Обработка данных</a>|
+        <a href="/show_data">Показать датасет</a>|
+        <a href="/show_data_result">Показать результат обучения модели</a>|
+        <a href="/confusion_matrix">Показать матрицу ошибок</a>
+         
+    </nav>
+    <h1>Обработка данных</h1>
+    <form action="/process" method="post">
+        <div>
+            <label for="target_column">Целевой признак для задачи бинарной классификации:</label>
+            <select name="target_column" id="target_column" required>
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <br>
+            <label for="model_type">Выберите модель:</label>
+            <select name="model_type" id="model_type" required>
+                <option value="logistic_regression">Логистическая регрессия</option>
+                <option value="decision_tree">Деревья решений</option>
+                <option value="random_forest">Случайный лес</option>
+            </select>
+        </div>
+        <div id="decision_tree_params" style="display: none;">
+            <br>
+            <label for="criterion">Критерий:</label>
+            <select name="criterion" id="criterion">
+                <option value="entropy">Энтропия</option>
+                <option value="gini">Джини</option>
+            </select><br>
+
+            <label for="max_depth">Максимальная глубина:</label>
+            <input type="number" name="max_depth" id="max_depth" value="8"><br>
+
+            <label for="min_samples_leaf">Минимальное кол-во объектов в листе:</label>
+            <input type="number" name="min_samples_leaf" id="min_samples_leaf" value="10"><br>
+
+            <label for="random_state">Random State:</label>
+            <input type="number" name="random_state" id="random_state" value="42"><br>
+        </div>
+        <br>
+        <button type="submit">Рассчитать</button>
+    </form>
+    <br>
+    <a href="/">Назад</a>
+<script>
+        const modelSelect = document.getElementById('model_type');
+        const decisionTreeParams = document.getElementById('decision_tree_params');
+
+        modelSelect.addEventListener('change', function() {
+            if (modelSelect.value === 'decision_tree') {
+                decisionTreeParams.style.display = 'block';
+            } else {
+                decisionTreeParams.style.display = 'none';
+            }
+        });
+</script>
+</body>
+</html>
