@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка и предобработка файла</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Загрузка</a> |
+        <a href="/model_selection">Обработка данных</a>|
+        <a href="/show_data">Показать датасет</a>|
+        <a href="/show_data_result">Показать результат обучения модели</a>|
+        <a href="/confusion_matrix">Показать матрицу ошибок</a>
+        
+
+    </nav>
+    <h1>Загрузка и предобработка файла</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="file">Файл CSV:</label>
+                <input type="file" name="file" id="file" required>
+            </div>
+            <br>
+             <button type="submit">Загрузить</button>
+         </form>
+</body>
+</html>
